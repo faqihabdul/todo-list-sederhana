@@ -10,7 +10,7 @@ const tugasKosong = document.querySelector('.isi-tugas');
 
 // btn add event
 function btnAddTask() {
-    const input = inputTask.value;
+    const input = inputTask.value.trim();
 
     if (input === '') {
         alert("Masukan isi terlebih dahulu !");
@@ -50,16 +50,23 @@ function btnAddTask() {
     inputTask.value = "";
 };
 
+// memasukan function
 btnTask.addEventListener('click', btnAddTask);
 
+inputTask.addEventListener('keydown', function(e){
+    if(e.key === "Enter") {
+        btnAddTask();
+    }
+});
 
-// btn hapus
 kumpulanTask.addEventListener('click', function(e){
+    // btn hapus
     if (e.target.className === "hapus") {
         e.target.parentElement.style.display = 'none';
         return;
     }
 
+    // checkbox
     if (e.target.type === "checkbox") {
         const checkbox = document.querySelectorAll('.task-container input[type="checkbox"]');
         const taskText = document.querySelectorAll('.task-container span');
@@ -67,12 +74,12 @@ kumpulanTask.addEventListener('click', function(e){
         checkbox.forEach(function(el,i){
             el.addEventListener('change', function(e) {
                 console.log(e.target);
-            if(e.target.checked) {
-                taskText[i].classList.add('selesai');
-            } else {
-                taskText[i].classList.remove('selesai');
-            }
-        });
+                if(e.target.checked) {
+                    taskText[i].classList.add('selesai');
+                } else {
+                    taskText[i].classList.remove('selesai');
+                }
+            });
         });
     }
 });
