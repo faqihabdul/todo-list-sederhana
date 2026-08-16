@@ -3,23 +3,21 @@ const inputTask = document.querySelector('.input-task input[type="text"]');
 const btnTask = document.querySelector('.btn-task');
 
 // tasks
-const checkbox = document.querySelector('.task-container input[type="checkbox"]');
 const kumpulanTask = document.querySelector('.kumpulan-task');
-const taskText = document.querySelector('.task-container span');
 
 // tugas kosong container
 const tugasKosong = document.querySelector('.isi-tugas');
 
 // btn add event
-btnTask.addEventListener('click', function() {
+function btnAddTask() {
     const input = inputTask.value;
-    tugasKosong.style.display = 'none';
 
     if (input === '') {
         alert("Masukan isi terlebih dahulu !");
         return;
     }
 
+    tugasKosong.style.display = 'none';
 
     // membuat new element containernya
     const newTask = document.createElement('div');
@@ -50,17 +48,31 @@ btnTask.addEventListener('click', function() {
     kumpulanTask.appendChild(newTask);
 
     inputTask.value = "";
-});
+};
 
-// checkbox event 
-// checkbox.addEventListener('click', function() {
-//     taskText.style.textDecoration = 'underline';
-// });
+btnTask.addEventListener('click', btnAddTask);
+
 
 // btn hapus
 kumpulanTask.addEventListener('click', function(e){
     if (e.target.className === "hapus") {
         e.target.parentElement.style.display = 'none';
         return;
+    }
+
+    if (e.target.type === "checkbox") {
+        const checkbox = document.querySelectorAll('.task-container input[type="checkbox"]');
+        const taskText = document.querySelectorAll('.task-container span');
+
+        checkbox.forEach(function(el,i){
+            el.addEventListener('change', function(e) {
+                console.log(e.target);
+            if(e.target.checked) {
+                taskText[i].classList.add('selesai');
+            } else {
+                taskText[i].classList.remove('selesai');
+            }
+        });
+        });
     }
 });

@@ -141,3 +141,7 @@ svg:hover {
     width: 50px;
 }
 
+.selesai {
+    text-decoration: line-through;
+    color: gray;
+}
