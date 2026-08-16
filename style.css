@@ -49,6 +49,7 @@ main {
     border: 1px solid var(--primary-color);
     border-radius: 8px;
     outline: none;
+    font-weight: 500;
 }
 
 .input-task input[type="text"]:focus {
@@ -84,6 +85,8 @@ main {
     border-radius: 8px;
     padding: 12px;
     display: flex;
+    margin-bottom: 20px;
+    align-items: center;
 }
 
 .task-container {
@@ -96,6 +99,8 @@ main {
 .task-container span {
     font-size: 20px;
     margin-left: 12px;
+    font-weight: 520;
+    
 }
 
 .task-container #checkbox {
@@ -103,7 +108,7 @@ main {
     cursor: pointer;
 }
 
-svg {
+/* svg {
     width: 25px;
     cursor: pointer;
 }
@@ -111,4 +116,28 @@ svg {
 svg:hover {
     fill: red;
     transition: all 0.2s ;
+} */
+
+.hapus {
+    font-size: 32px;
+    align-self: center;
+    cursor: pointer;
 }
+
+.hapus:hover {
+    color: red;
+    transition: all 0.2s ;
+}
+
+.isi-tugas {
+    display: block;
+    text-align: center;
+    margin: 100px auto;
+    color: rgb(86, 85, 85);
+    fill: rgb(86, 85, 85);
+}
+
+.isi-tugas svg {
+    width: 50px;
+}
+
