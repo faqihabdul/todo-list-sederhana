@@ -62,24 +62,18 @@ inputTask.addEventListener('keydown', function(e){
 kumpulanTask.addEventListener('click', function(e){
     // btn hapus
     if (e.target.className === "hapus") {
-        e.target.parentElement.style.display = 'none';
+        e.target.parentElement.remove();
+
+        if (kumpulanTask.children.length === 1) {
+        tugasKosong.style.display = 'block';
+    }
         return;
     }
 
     // checkbox
     if (e.target.type === "checkbox") {
-        const checkbox = document.querySelectorAll('.task-container input[type="checkbox"]');
-        const taskText = document.querySelectorAll('.task-container span');
-
-        checkbox.forEach(function(el,i){
-            el.addEventListener('change', function(e) {
-                console.log(e.target);
-                if(e.target.checked) {
-                    taskText[i].classList.add('selesai');
-                } else {
-                    taskText[i].classList.remove('selesai');
-                }
-            });
-        });
+        const taskText = e.target.parentElement.querySelector('span');
+        taskText.classList.toggle('selesai');
     }
+
 });
